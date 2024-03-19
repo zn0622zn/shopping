@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zn.login.dao.RoleDao">
+    <select id="selectRolesByUserId" resultType="com.zn.po.Role">
+        SELECT role_.id_, desc_, name_, title_
+        FROM role_
+                 LEFT JOIN role_user_ ON role_.id_ = role_user_.role_id_
+                 LEFT JOIN user_ ON role_user_.user_id_ = user_.id_
+        WHERE user_.id_ = #{param1};
+    </select>
+</mapper>

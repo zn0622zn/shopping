@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zn.order.dao.OrderDao">
+    <update id="pay">
+        UPDATE order_
+        SET pay_status_=1
+        WHERE id_ = #{param1}
+    </update>
+    <select id="selectByPage" resultType="com.zn.po.Order">
+        select
+        *
+        from
+        order_
+        <where>
+            <if test="username != null and username != ''">
+                username_ = #{username}
+            </if>
+        </where>
+    </select>
+    <select id="selectPayStatusById" resultType="java.lang.String">
+        SELECT pay_status_
+        FROM order_
+        WHERE id_ = #{param1};
+    </select>
+</mapper>

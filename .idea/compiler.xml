@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/shop-parent/shop-canal/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="login-service" />
+        <module name="registry" />
+        <module name="shop-core" />
+        <module name="shop-item-service" />
+        <module name="shop-upload" />
+        <module name="search-interface" />
+        <module name="login-interface" />
+        <module name="seckill-interface" />
+        <module name="seckill-service" />
+        <module name="shop-item-interface" />
+        <module name="search-service" />
+        <module name="shop-common" />
+        <module name="order-interface" />
+        <module name="order-service" />
+        <module name="config" />
+        <module name="gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="oauth-center" target="1.8" />
+      <module name="pay" target="1.8" />
+      <module name="shop-admin" target="1.8" />
+      <module name="shop-admin-interface" target="1.8" />
+      <module name="shop-admin-service" target="1.8" />
+      <module name="shop-canal" target="1.8" />
+      <module name="shop-page" target="1.8" />
+      <module name="shop-security" target="1.8" />
+      <module name="shop-security-interface" target="1.8" />
+      <module name="shop-security-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="login-interface" options="-parameters" />
+      <module name="login-service" options="-parameters" />
+      <module name="oauth-center" options="-parameters" />
+      <module name="order-interface" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="pay" options="-parameters" />
+      <module name="registry" options="-parameters" />
+      <module name="search-interface" options="-parameters" />
+      <module name="search-service" options="-parameters" />
+      <module name="seckill-interface" options="-parameters" />
+      <module name="seckill-service" options="-parameters" />
+      <module name="shop-admin-interface" options="-parameters" />
+      <module name="shop-admin-service" options="-parameters" />
+      <module name="shop-canal" options="-parameters" />
+      <module name="shop-common" options="-parameters" />
+      <module name="shop-core" options="-parameters" />
+      <module name="shop-item" options="" />
+      <module name="shop-item-interface" options="-parameters" />
+      <module name="shop-item-service" options="-parameters" />
+      <module name="shop-login" options="" />
+      <module name="shop-page" options="-parameters" />
+      <module name="shop-security-interface" options="-parameters" />
+      <module name="shop-security-service" options="-parameters" />
+      <module name="shop-upload" options="-parameters" />
+    </option>
+  </component>
+</project>

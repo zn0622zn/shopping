@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zn.item.dao.SpecGroupDao">
+
+    <sql id="selectSql">
+        SELECT *
+        FROM spec_group_
+    </sql>
+    <select id="selectList" resultMap="groupMap">
+        <include refid="selectSql"></include>
+        <where>
+            <if test="cid != null">
+                cid_ = #{cid}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="groupMap" type="com.zn.shop.item.po.SpecGroup">
+        <id column="id_" property="id"></id>
+        <result property="cid" column="cid_"></result>
+        <result property="name" column="name_"></result>
+        <collection property="params" javaType="java.util.List" ofType="com.zn.shop.item.po.SpecParam"
+                    select="com.zn.item.dao.SpecParamDao.findByGroupId" column="id_">
+            <id column="id_" property="id"></id>
+            <result column="cid_" property="cid"></result>
+            <result column="group_id_" property="groupId"></result>
+            <result column="name_" property="name"></result>
+            <result column="numeric_" property="numeric"></result>
+            <result column="unit_" property="unit"></result>
+            <result column="generic_" property="generic"></result>
+            <result column="searching_" property="searching"></result>
+        </collection>
+    </resultMap>
+    <select id="selectById" resultMap="groupMap">
+        <include refid="selectSql"></include>
+        where
+        id_ = #{id}
+    </select>
+</mapper>

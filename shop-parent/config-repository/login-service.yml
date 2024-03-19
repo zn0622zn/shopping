@@ -1,0 +1,11 @@
+server:
+  port: 9033
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*.xml
+  type-aliases-package: com.zn.po
+  configuration:
+    # 下划线驼峰转换
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zn.item.dao.SpuDao">
+    <select id="selectByPage" resultType="Spu">
+        select
+        a.*,
+        b.name_ as brandName,
+        c.title_ as categoryName
+        from
+        spu_ a
+        left join
+        brand_ b on a.brand_id_ = b.id_
+        left join
+        category_ c on a.cid3_ = c.id_
+        <where>
+            <if test="title != null and title != ''">
+                and a.title_ like '%${title}%'
+            </if>
+            <if test="cid3 != null">
+                and cid3_ = #{cid3}
+            </if>
+            <if test="brandId != null">
+                and brand_id_ = #{brandId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectById" resultMap="spuMap">
+        select *
+        from spu_
+        where id_ = #{id}
+    </select>
+
+    <resultMap id="spuMap" type="Spu">
+        <id column="id_" property="id"></id>
+        <association property="spuDetail" javaType="SpuDetail" select="com.zn.item.dao.SpuDetailDao.selectById"
+                     column="id_">
+            <id column="id_" property="id"></id>
+        </association>
+        <collection property="skus" javaType="java.util.List" ofType="Sku" select="com.zn.item.dao.SkuDao.findBySkuId"
+                    column="id_">
+            <id column="id_" property="id"></id>
+        </collection>
+    </resultMap>
+
+    <select id="selectSpuByBrandId" resultMap="myMap">
+        select *
+        from spu_
+        where brand_id_ IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+    <resultMap id="myMap" type="Spu">
+        <id column="id_" property="id"></id>
+        <association property="spuDetail" javaType="SpuDetail" select="com.zn.item.dao.SpuDetailDao.selectById"
+                     column="id_">
+            <id column="id_" property="id"></id>
+        </association>
+        <collection property="skus" javaType="java.util.List" ofType="Sku" select="com.zn.item.dao.SkuDao.findBySkuId"
+                    column="id_">
+            <id column="id_" property="id"></id>
+        </collection>
+    </resultMap>
+</mapper>

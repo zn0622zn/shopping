@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: search-service
+  main:
+#    允许@FeginClient("相同服务名")
+    allow-bean-definition-overriding: true

@@ -1,0 +1,26 @@
+server:
+  port: 9010
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+
+mq:
+  pay:
+    exchange:
+      order: exchange.pay.order #支付交换机
+    queue:
+      order: queue.pay.order #支付队列
+    routing:
+      key: routing.pay.order #支付路由
+  order:
+    exchange:
+      ttl: exchange.order.ttl #订单延迟交换机
+      dlx: exchange.order.dlx #订单死信交换机
+    queue:
+      ttl: queue.order.ttl #订单延迟队列
+      dlx: queue.order.dlx #订单死信队列
+    routing:
+      ttl: routing.order.ttl #订单延迟路由
+      dlx: routing.order.dlx #订单死信路由

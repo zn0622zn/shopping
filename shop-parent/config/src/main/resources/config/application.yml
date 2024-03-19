@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 10 #每10s从注册中心获取注册信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10 # Eureka期待心跳频率
+    lease-renewal-interval-in-seconds: 5 # 5秒一次心跳
+
+spring:
+  profiles:
+    active: composite,default
+  cloud:
+    config:
+      server:
+        bootstrap: true # 提前加载bootstrap，引导。
+        default-profile: default
+        default-label: master
+        composite: # 本地文件，非git
+          - type: native
+            search-locations: file:C:\Users\张nan\Desktop\MyProject\shop\shop-parent\config-repository

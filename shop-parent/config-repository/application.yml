@@ -1,0 +1,49 @@
+eureka:
+  client:
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 30 #每30s更新数据
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true # 调用getHostname获取hostname，返回ip，用于gateway令牌桶限流获取ip
+    lease-expiration-duration-in-seconds: 10 # 10秒即过期
+    lease-renewal-interval-in-seconds: 5 # 5秒一次心跳
+
+feign:
+  hystrix:
+    enabled: true #开启熔断
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000 #熔断超时时间
+          strategy: SEMAPHORE #调用的线程处理熔断
+
+ribbon:
+  ReadTimeout: 60000 #通信超时时间
+  ConnectTimeout: 60000 #连接超时时间
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true #获取不到配置，立即失败并重试
+      retry:
+        initial-interval: 1000 #最初重试间隔为 1000 毫秒
+        max-interval: 5000 #最长重试间隔为 5000 毫秒
+        multiplier: 2 #每次重试失败后，重试间隔所增加的倍数
+        max-attempts: 6 #最多重试 6 次
+  #数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop_db?characterEncoding=utf8&useSSL=false&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: zhangnan
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      idle-timeout: 60000
+      maximum-pool-size: 30
+      minimum-idle: 10

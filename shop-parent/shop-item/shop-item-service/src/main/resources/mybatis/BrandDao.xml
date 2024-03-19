@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zn.item.dao.BrandDao">
+
+    <select id="selectByPage" resultType="com.zn.shop.item.po.Brand">
+        select
+        *
+        from
+        brand_
+        <where>
+            <if test="name != null and name != ''">
+                and name_ like '%${name}%'
+            </if>
+        </where>
+    </select>
+
+
+    <delete id="deleteCategoryByBrand">
+        delete
+        from category_brand_
+        where brand_id_ IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <insert id="insertCategoryAndBrand">
+        insert into category_brand_(category_id_,brand_id_)
+        values (#{categoryId},
+                #{brandId})
+    </insert>
+
+    <select id="selectCategoryByBrand" resultType="com.zn.shop.item.po.Category">
+        SELECT a.id_        AS "id",
+               a.title_     AS "title",
+               a.order_     AS "order",
+               a.parent_id_ AS "parentId"
+        FROM category_ a
+                 LEFT JOIN category_brand_ b ON b.category_id_ = a.id_
+                 LEFT JOIN brand_ c ON c.id_ = b.brand_id_
+        WHERE c.id_ = #{id}
+    </select>
+    <select id="selectBrandByCategoryId" resultType="com.zn.shop.item.po.Brand">
+        SELECT brand_.id_, brand_.name_, brand_.image_, brand_.letter_
+        FROM category_brand_
+                 LEFT JOIN brand_ ON category_brand_.brand_id_ = brand_.id_
+        WHERE category_id_ = #{param1};
+    </select>
+
+</mapper>

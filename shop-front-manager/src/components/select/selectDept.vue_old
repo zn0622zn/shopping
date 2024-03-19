@@ -1,0 +1,31 @@
+<template>
+    <div>
+
+    <Tree :data="deptList" @on-select-change="selectDept"></Tree>
+    </div>
+</template>
+<script>
+import instance from '@/libs/api/index'
+
+export default {
+  name: 'selectDept',
+  data () {
+    return {
+      deptList: []
+    }
+  },
+  methods: {
+    selectDept (sn) {
+      this.$emit('onSelectDept', sn[0].id, sn[0].title)
+      this.$Modal.remove()
+    }
+  },
+  mounted () {
+    instance.post(`/admin/dept/list`).then(response => {
+      this.deptList = response.data
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+}
+</script>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-item/shop-item-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-item/shop-item-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-item/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-item/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

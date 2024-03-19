@@ -1,0 +1,20 @@
+server:
+  port: 9004
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+fdfs:
+  # 链接超时
+  connect-timeout: 60
+  # 读取时间
+  so-timeout: 60
+  # 生成缩略图参数
+  thumb-image:
+    width: 150
+    height: 150
+  tracker-list: 192.168.64.129:22122

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/shop.iml" filepath="$PROJECT_DIR$/.idea/shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-parent/shop-common/shop-common.iml" filepath="$PROJECT_DIR$/shop-parent/shop-common/shop-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-parent/shop-core/shop-core.iml" filepath="$PROJECT_DIR$/shop-parent/shop-core/shop-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-front/shop-front.iml" filepath="$PROJECT_DIR$/shop-front/shop-front.iml" />
+      <module fileurl="file://D:/迅雷下载/Java大型电商平台开发实战/01-品牌/资料/源码/代码/代码/legou-manager-ui/shop-front-manager.iml" filepath="D:/迅雷下载/Java大型电商平台开发实战/01-品牌/资料/源码/代码/代码/legou-manager-ui/shop-front-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-parent/shop-parent.iml" filepath="$PROJECT_DIR$/shop-parent/shop-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-parent/shop-security/shop-security.iml" filepath="$PROJECT_DIR$/shop-parent/shop-security/shop-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-parent/shop-upload/shop-upload.iml" filepath="$PROJECT_DIR$/shop-parent/shop-upload/shop-upload.iml" />
+    </modules>
+  </component>
+</project>

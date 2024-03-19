@@ -1,0 +1,62 @@
+server:
+  port: 8062
+
+spring:
+  cloud:
+    gateway:
+      #允许跨域
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-origins: "*"
+            allowed-headers: "*"
+            allowed-methods: "*"
+            max-age: 3600
+      #路由
+      routes:
+        - id: item-service
+          uri: lb://item-service
+          predicates:
+            - Path=/gateway/item/**
+          filters:
+            - StripPrefix=2
+#------------------------------------------------------------------
+        - id: login-service
+          uri: lb://login-service
+          predicates:
+            - Path=/gateway/login/**
+          filters:
+            - StripPrefix=2
+#------------------------------------------------------------------
+        - id: security-service
+          uri: lb://security-service
+          predicates:
+            - Path=/gateway/security/**
+          #令牌桶限流
+          filters:
+            - StripPrefix=2
+#------------------------------------------------------------------
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/gateway/shopping/**
+          #令牌桶限流
+          filters:
+            - StripPrefix=2
+#------------------------------------------------------------------
+        - id: seckill-service
+          uri: lb://seckill-service
+          predicates:
+            - Path=/gateway/seckill/**
+          #令牌桶限流
+          filters:
+            - StripPrefix=2
+#------------------------------------------------------------------
+            #令牌桶限流
+            - name: RequestRateLimiter
+              args:
+                key-resolver: "#{@ipKeyResolver}"
+                redis-rate-limiter.replenishRate: 1 #每秒1个令牌
+                redis-rate-limiter.burstCapacity: 5 #令牌桶容量为5
+

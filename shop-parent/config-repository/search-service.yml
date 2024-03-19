@@ -1,0 +1,20 @@
+server:
+  port: 9006
+
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  level:
+    org.springframework.web: debug
+    com.zn: debug
+
+spring:
+  data:
+    elasticsearch:
+      cluster-name: myShopSearch
+      cluster-nodes: 127.0.0.1:9300
+  elasticsearch:
+    rest:
+      uris: 127.0.0.1:9200
+  jackson:
+    default-property-inclusion: non_null # 配置json处理，忽略null
